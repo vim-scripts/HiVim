@@ -1,0 +1,16 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=2838
+
+HiVim is actually a great (in my opinion) G/Vim color scheme creator written in Tcl/Tk/Tix/Bwidget.
+
+HiVim calls GVim so to test your scheme (the fun part) you need GVim installed.
+
+You also need Tcl/Tk/Tix/Bwidget installed...
+
+A screen shot is here:
+
+http://img.photobucket.com/albums/v124/DefEye/Screenshot-17.png
+
+A stand alone executable is here (all libraries included):
+
+http://www.mediafire.com/file/zy5ux4yn0wm/HiVim-executable.tar.gz
+
