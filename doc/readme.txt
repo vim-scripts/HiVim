@@ -9,8 +9,10 @@ If you want to make a picture for the aspect (Many are missing because
 I don't know what they are), you can add a 130x92 *.ppm image of the
 same name to HiVim/Images (Vsplit.ppm for Vsplit).
 
-You need Tcl/Bwidget/Tix libraries to run this.
+You need Tcl/Bwidget/Tix libraries to run this, or you can run the executable (make from freewrapPLUS).
 
 Write me at saftousmis@gmail.com if you have any questions.
+
+It doesn't work if there is a pre existing instance of GVim running.
 
 Stratis Aftousmis

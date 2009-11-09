@@ -7,7 +7,7 @@ if {![info exists vTcl(sourcing)]} {
     # Provoke name search
     catch {package require bogus-package-name}
     set packageNames [package names]
-
+    lappend :::auto_path [file dirname [list */bwidget1.9/pkgIndex.tcl]]
     package require BWidget
     switch $tcl_platform(platform) {
 	windows {
@@ -288,7 +288,8 @@ proc vTcl:project:info {} {
 proc ::main {argc argv} {
 global color
 global env
-set ::progDir "$env(PWD)"
+
+set ::progDir [exec pwd]
 set color "NONE"
 set ImgDir "$::progDir/Images"
 set ComBox0 ".top47.can68.com83"
@@ -334,9 +335,9 @@ global color
 global env
 
 while {![string match [exec gvim --serverlist] "HIVIM"]} {
-    exec gvim --servername HiVim --remote-silent $::progDir/TestCopy.tcl &
-    after 1000
-}
+    exec gvim --servername HiVim --remote-silent $::progDir/TestCopy.tcl & 
+    after 3000 
+} 
 exec gvim --servername HiVim --remote-send ":hi $Aspect guifg=$GuiFB guibg=$GuiBG gui=$GuiType<CR>"
 return "hi $Aspect guifg=$GuiFB guibg=$GuiBG gui=$GuiType"
 }
@@ -347,7 +348,7 @@ proc ::ChooseCol {} {
 global widget
 global color
 
-set color [tk_chooseColor]
+set color [SelectColor::dialog .b]
 }
 #############################################################################
 ## Procedure:  SaveState
@@ -457,7 +458,7 @@ proc vTclWindow.top47 {base} {
     vTcl:toplevel $top -class Toplevel \
         -highlightcolor black 
     wm focusmodel $top passive
-    wm geometry $top 358x166+259+344; update
+    wm geometry $top 358x166+269+392; update
     wm maxsize $top 1351 738
     wm minsize $top 1 1
     wm overrideredirect $top 0
@@ -489,7 +490,7 @@ proc vTclWindow.top47 {base} {
         -highlightcolor black -insertbackground black -justify center \
         -modifycmd Display -relief groove -selectbackground #d9d9d9 \
         -selectforeground black -takefocus 1 -text Comment \
-        -values {Comment Constant Cursor CursorIM CursorColumn CursorLine Directory DiffAdd DiffChange DiffDelete DiffText ErrorMsg VertSplit Folded FoldedColumn SignColumn Identifier IncSearch  LineNr MatchParen ModeMsg MoreMsg NonText Normal Pmenu PmenuSel PmenuSbar PmenuThumb Question Search SpecialKey SpellBad SpellCap SpellLocal SpellRare Statement StatusLine StatusLineNC TabLine TabLineFill TabLineSel Title Visual VisualNOS WarningMsg WildMenu} 
+        -values {Comment Constant Cursor CursorIM CursorColumn CursorLine Directory DiffAdd DiffChange DiffDelete DiffText ErrorMsg VertSplit Folded FoldedColumn SignColumn Identifier IncSearch  LineNr MatchParen ModeMsg MoreMsg NonText Normal Number Pmenu PmenuSel PmenuSbar PmenuThumb Question Search SpecialKey SpellBad SpellCap SpellLocal SpellRare Statement StatusLine StatusLineNC TabLine TabLineFill TabLineSel Title Visual VisualNOS WarningMsg WildMenu} 
     vTcl:DefineAlias "$top.can68.com83" "ComboBox1" vTcl:WidgetProc "Toplevel1" 1
     bindtags $top.can68.com83 "$top.can68.com83 BwComboBox $top all"
     ComboBox $top.can68.com84 \
